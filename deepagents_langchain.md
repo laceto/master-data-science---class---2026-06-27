@@ -638,30 +638,12 @@ Orchestrator:
 
 ## 10. Production & Observability
 
-### LangSmith Integration
-
-DeepAgents has first-class LangSmith integration for tracing, evaluation, and monitoring:
-
-```bash
-export LANGCHAIN_TRACING_V2=true
-export LANGCHAIN_API_KEY="your-langsmith-api-key"
-export LANGCHAIN_PROJECT="my-deep-agent"
-```
-
-Every run is automatically traced. You can view:
-- Full tool call sequences
-- Subagent execution trees
-- Token usage per step
-- Latency breakdowns
-- Context compression events
-
 ### Managed Deep Agents
 
 LangChain offers a **Managed Deep Agents** service — a hosted platform that handles the operational complexity of running production agents, including:
 - Persistent storage for filesystem and memory backends
 - Async subagent execution infrastructure
 - Auto-scaling
-- Built-in LangSmith observability
 
 ### Checkpointing & Resuming
 
@@ -707,7 +689,7 @@ DeepAgents is designed around three principles:
 | **0.3** | Late 2025 | Skills (SKILL.md), improved memory, MCP server integration |
 | **0.4** | Early 2026 | Inline subagents with isolated contexts, `task` tool |
 | **0.5** | April 2026 | **Async subagents** — background execution via Agent Protocol; 5 new async task tools |
-| **0.6** | May 2026 | Managed Deep Agents hosted service; improved LangSmith integration |
+| **0.6** | May 2026 | Managed Deep Agents hosted service; improved observability |
 | **0.6.11** | June 18, 2026 | Current stable release |
 
 ---
