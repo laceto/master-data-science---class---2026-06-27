@@ -467,11 +467,23 @@ DeepAgents is **model-agnostic** — it works with any LLM that supports tool ca
 
 **Model string format:** `provider:model-name`
 
+Install the OpenAI provider:
+
+```bash
+pip install langchain-openai
+export OPENAI_API_KEY="sk-..."
+```
+
 ```python
-# Frontier APIs
-create_deep_agent(model="openai:gpt-4o")
-create_deep_agent(model="openai:gpt-4.1")
-create_deep_agent(model="anthropic:claude-sonnet-4-6")
+from deepagents import create_deep_agent
+
+# OpenAI — recommended default
+create_deep_agent(model="openai:gpt-4o")          # best balance of speed & capability
+create_deep_agent(model="openai:gpt-4o-mini")     # cheaper, faster, lighter tasks
+create_deep_agent(model="openai:gpt-4.1")         # latest flagship
+create_deep_agent(model="openai:o3")              # reasoning-optimized for complex planning
+
+# Other frontier APIs (also supported)
 create_deep_agent(model="anthropic:claude-opus-4-8")
 create_deep_agent(model="google:gemini-2.5-pro")
 
@@ -482,10 +494,9 @@ create_deep_agent(model="fireworks:qwen2.5-72b")
 # Self-hosted / local
 create_deep_agent(model="ollama:llama3.3")
 create_deep_agent(model="vllm:mistral-7b")
-create_deep_agent(model="llamacpp:phi-3-mini")
 ```
 
-For long-horizon tasks, **larger context models** with strong tool-calling capabilities (GPT-4o, Claude Sonnet/Opus, Gemini 2.5 Pro) are recommended.
+For long-horizon tasks, **`openai:gpt-4o`** or **`openai:gpt-4.1`** are the recommended defaults — they offer large context windows, reliable tool calling, and strong planning capability.
 
 ---
 
@@ -574,7 +585,7 @@ from langchain_tavily import TavilySearch
 
 # Specialized research subagent
 search_agent = create_deep_agent(
-    model="anthropic:claude-sonnet-4-6",
+    model="openai:gpt-4o",
     tools=[TavilySearch(max_results=10)],
     system_prompt="""You are a research specialist. 
     Given a research question, find comprehensive, cited information.
@@ -584,7 +595,7 @@ search_agent = create_deep_agent(
 
 # Main orchestrator agent
 orchestrator = create_deep_agent(
-    model="anthropic:claude-opus-4-8",
+    model="openai:gpt-4o",
     subagents={"researcher": search_agent},
     system_prompt="""You are a research director managing a team of researchers.
     
