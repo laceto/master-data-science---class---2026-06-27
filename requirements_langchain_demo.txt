@@ -1,0 +1,9 @@
+langchain==0.1.17
+langchain-openai==0.1.10
+langchain-community==0.0.34
+langchain-text-splitters==0.0.1
+faiss-cpu==1.7.4
+streamlit==1.35.0
+pandas==2.1.4
+openpyxl==3.10.10
+numpy==1.24.3
