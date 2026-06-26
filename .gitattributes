@@ -1,0 +1,17 @@
+# Auto-normalize line endings for all files
+* text=auto
+
+# Explicitly handle Jupyter notebooks
+*.ipynb text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.R text eol=lf
+*.Rmd text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Binary files
+*.xlsx binary
+*.html binary
+*.Rproj binary
